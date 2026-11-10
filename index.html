@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101514">
+  <meta name="description" content="8秒前の自分が、敵になる。過去の軌跡をかわしてコインを集める、四方向移動だけのサバイバルゲーム。PC・スマホ対応。">
+  <title>8秒前の自分 — EIGHT SECONDS</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="topbar"><a href="./" class="wordmark" aria-label="8秒前の自分 ホーム"><span class="brand-symbol">8<span>↶</span></span>EIGHT SECONDS<span class="edition">/ SURVIVAL GAME</span></a><span class="top-note"><i></i> YOUR PAST IS CATCHING UP</span></header>
+  <main>
+    <section class="intro" aria-labelledby="title">
+      <p class="eyebrow">YOU VS. YOUR PAST</p>
+      <h1 id="title">8秒前の<span>自分。</span></h1>
+      <p class="lead">さっきの自分が、追いかけてくる。</p>
+      <p class="description">逃げ道をつくるのも、ふさぐのも自分。<br>過去の軌跡をかわして、何秒生き残れる？</p>
+      <div class="rules">
+        <div><span class="rule-number">01</span><p><strong>動く。集める。</strong><small>四方向に移動してコインを獲得。<br>1枚につき +100 pt。</small></p></div>
+        <div><span class="rule-number">02</span><p><strong>8秒ごとに、自分が増える。</strong><small>敵は8秒・16秒・24秒…遅れで<br>あなたと同じ軌跡をたどる。</small></p></div>
+        <div><span class="rule-number">03</span><p><strong>過去の自分に、触れない。</strong><small>接触したらゲームオーバー。<br>生き残るだけでも毎秒 +10 pt。</small></p></div>
+      </div>
+      <div class="best-card"><span>PERSONAL BEST<small>このブラウザのベストスコア</small></span><strong id="best">0</strong><span class="unit">pt</span></div>
+      <p id="storage-note" class="storage-note" hidden>このブラウザでは記録を保存できません。</p>
+    </section>
+    <section class="game-section" aria-label="ゲーム">
+      <div class="hud"><div class="score-block"><span>SCORE</span><strong id="score">0000</strong></div><div><span>TIME</span><strong><b id="time">0.0</b><small>s</small></strong></div><div><span>ECHOES</span><strong id="echoes">00</strong></div><button id="pause" class="icon-button" aria-label="一時停止" disabled>Ⅱ</button></div>
+      <div class="arena" id="arena">
+        <canvas id="game" width="640" height="640" aria-label="ゲームフィールド。キーボードの矢印キー・WASD、または画面下の方向ボタンで移動。" tabindex="0"></canvas>
+        <div class="overlay" id="overlay">
+          <div class="overlay-card">
+            <div class="orbit-mark" aria-hidden="true"><i></i><b>8</b><i></i></div>
+            <p class="eyebrow" id="overlay-tag">A CHASE WITH YOURSELF</p>
+            <h2 id="overlay-title">未来の自分に、<br>逃げ道を。</h2>
+            <p id="overlay-copy">操作は移動だけ。最初の8秒で、準備しよう。</p>
+            <div id="result" hidden><strong id="result-score">0</strong><span>pt</span><p id="result-detail"></p></div>
+            <button id="start" class="primary">プレイする <span>↗</span></button>
+            <p class="overlay-hint" id="overlay-hint">矢印キー / WASD / タッチ操作</p>
+          </div>
+        </div>
+        <div class="toast" id="toast" aria-live="polite"></div>
+      </div>
+      <div class="echo-timer"><div><span id="next-label">NEXT ECHO</span><strong><span id="next">8.0</span><small>s</small></strong></div><div class="progress"><i id="progress"></i></div></div>
+      <div class="below-arena"><div class="legend"><span><i class="you"></i>あなた</span><span><i class="enemy"></i>過去の自分</span><span><i class="coin"></i>コイン</span></div><button id="sound" class="text-button" aria-pressed="false">サウンド OFF</button></div>
+      <div class="controls"><p class="desktop-help"><kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd> / WASD <span>移動</span><br><kbd>Space</kbd> / <kbd>Esc</kbd> <span>一時停止</span></p><p class="touch-help">ボタンを長押しで移動<br><span>フィールドをスワイプしても操作できます</span></p><div class="dpad" role="group" aria-label="移動操作"><button data-direction="up" aria-label="上へ移動">↑</button><button data-direction="left" aria-label="左へ移動">←</button><span aria-hidden="true">✧</span><button data-direction="right" aria-label="右へ移動">→</button><button data-direction="down" aria-label="下へ移動">↓</button></div></div>
+      <details class="mobile-rules"><summary>遊び方・スコア</summary><p>8秒ごとに、あなたの動きを8秒・16秒・24秒…遅れで再現する敵が増えます。赤い敵に触れるとゲームオーバー。黄色いコインは1枚100点、生存1秒につき10点です。</p><p>敵の出現後0.75秒間は接触しても大丈夫。ボタンを離すと移動を止められます。ベストスコアはこのブラウザに保存されます。</p></details>
+    </section>
+  </main>
+  <footer><span>EVERY MOVE LEAVES AN ECHO.</span><span>8秒前の自分 <i>·</i> リトライするたび、うまくなる。</span></footer>
+  <noscript>このゲームにはJavaScriptが必要です。ブラウザの設定で有効にしてください。</noscript>
+  <script type="module" src="./game.js"></script>
+</body>
+</html>
